@@ -25,3 +25,8 @@ router.route('/signup')
 router.route('/login')
   .get(usersController.getLogin)
   .post(usersController.postLogin)
+
+router.route("/logout")
+  .get(usersController.getLogout)
+
+module.exports = router
