@@ -24,8 +24,13 @@ module.exports = function(passport) {
 
       // if user not found
       if(!user) return callback(null, false,, req.flash('loginMessage', 'Please sign up!'));
-      
+
+      // Checking correct password
+      if(!user.validPassword(password)) return callback(null, false, req.flash('loginMessage', 'Wrong password'));
+
+      // User Authenticated
+      return callback(null, user)
+
     })
-  }  
-  }))
-}
+  }));
+  
