@@ -21,3 +21,7 @@ router.route('/')
 router.route('/signup')
   .get(usersController.getSignup)
   .post(usersController.postSignup)
+
+router.route('/login')
+  .get(usersController.getLogin)
+  .post(usersController.postLogin)
