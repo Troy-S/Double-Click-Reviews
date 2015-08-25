@@ -1,0 +1,11 @@
+<div action="/games/show" method="GET">
+  <ul>
+    <li><%= game.title %></li>
+    <li><%= game.release_date %></li>
+    <li><%= game.platform %></li>
+    <li><%= game.price %></li>
+  </ul>
+</div>
+
+<label for="name">Description</label>
+<input type="text" name="game[description]">

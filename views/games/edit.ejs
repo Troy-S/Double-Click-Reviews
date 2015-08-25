@@ -1,0 +1,22 @@
+<div class="new_form_container">
+  <form action="/games/<%= game.id %>" method="POST">
+    <div>
+      <label for="name">Title:</label>
+      <input type="text" name="game[title]" value="<%= game.title %>">
+
+      <label for="name">platform:</label>
+      <input type="text" name="game[platform]">
+
+      <label for="name">release_date:</label>
+      <input type="date" name="game[release_date]">
+
+      <label for="name">description:</label>
+      <input type="text" name="game[description]">
+
+      <label for="name">price:</label>
+      <input type="number" name="game[price]">
+
+      <input type="submit">
+    </div>
+  </form>
+</div>
