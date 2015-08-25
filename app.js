@@ -2,11 +2,15 @@ var express = require ('express');
 var app = express();
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var expressLayouts = require('express-ejs-layouts');
 var path = require('path');
-var methodOverride = require('method-override')
+var methodOverride = require('method-override');
 var Game = require('./models/game');
 var ejs = require('ejs');
+var passport = require('passport');
+var flash = require('connect-flash');
+var session = require('express-session');
 
 var port = process.env.PORT || 9000;
 
