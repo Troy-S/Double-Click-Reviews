@@ -14,75 +14,44 @@ module.exports = function(passport) {
   });
 
   passport.use('local-login', new LocalStrategy({
-    usernameField : 'email',
-    passwordField : 'password',
+    usernameField     : "email",
+    passwordField     : "password",
     passReqToCallback : true
-  }, function(req, email, password, callback){
-    // Searching for user from login form ONCE CREATED
-    User.findOne({ 'local.email': email}, function(err, user) {
-      if(err) return callback(err);
+  }, function(req, email, password, callback) {
+    User.findOne({ 'local.email' : email }, function(err, user) {
+      if (err) return callback(err);
 
-      // if user not found
-      if(!user) return callback(null, false,, req.flash('loginMessage', 'Please sign up!'));
+      if (!user) return callback(null, false, req.flash('loginMessage', 'No user found'));
 
-      // Checking correct password
-      if(!user.validPassword(password)) return callback(null, false, req.flash('loginMessage', 'Wrong password'));
+      if (!user.validPassword(password)) return callback(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
 
-      // User Authenticated
-      return callback(null, user)
-
-    })
+      return callback(null, user);
+    });
   }));
 
-  passport.use('local-signup', new LocalStrategy) {
-    usernameField : 'email',
-    passwordField : 'password',
+  passport.use('local-signup', new LocalStrategy({
+    usernameField     : "email",
+    passwordField     : "password",
     passReqToCallback : true
   }, function(req, email, password, callback) {
     process.nextTick(function() {
+      // FIND A USER WITH AN EMAIL
+      User.findOne({ 'local.email' : email }, function(err, user) {
+        if (err) return callback(err)
 
-    // Find user with email
-    User.findOne({ 'local.email' : email }, function(err, userr) {
-      if(err) return callback(err)
+          if (user) {
+            return callback(null, false, req.flash('signupMessage', 'This email is already in use.'));
+          } else {
+            var newUser            = new User();
+            newUser.local.email    = email;
+            newUser.local.password = newUser.encrypt(password)
 
-        if(user) {
-          return callback(null, false, req.flash('signupMessage', 'Pick another email!'));
-        } else {
-          var newUser = new User();
-          newUser.local.email = email;
-          newUser.local.password = newUser.encrypt(password)
-
-          newUser.save(function(err) {
-            if(err) throw err;
-            return callback(null, newUser);
-          });
-        }
-      });
-  });
-}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            newUser.save(function(err) {
+              if (err) throw err;
+              return callback(null, newUser);
+            });
+          }
+        });
+    });
+  }));
+} 
