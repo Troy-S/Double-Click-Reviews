@@ -32,5 +32,8 @@ app.use(flash());
 
 require('./config/passport')(passport);
 
+var routes = require('./config/routes');
+app.use(routes);
+
 app.listen(port);
 console.log('Server started on', port);
