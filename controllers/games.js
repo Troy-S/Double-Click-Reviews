@@ -34,11 +34,18 @@ app.get("/", function(req, res) {
 });
 
 // INDEX
-app.get('/games', function(req, res) {
+
+function getGames(req, res) {
   Game.find({}, function(err, games) {
-      res.render('games/index', { games: games });
+    res.render('games/index', { games: games});
   });
-});
+}
+
+// app.get('/games', function(req, res) {
+//   Game.find({}, function(err, games) {
+//       res.render('games/index', { games: games });
+//   });
+// });
 
 // NEW
 app.get('/games/new', function(req, res) {
