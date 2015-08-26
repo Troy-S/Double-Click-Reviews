@@ -12,6 +12,7 @@ function authenticatedUser(req, res, next) {
   res.redirect('/');
 }
 
+// User Routes
 router.route('/secret')
   .get(authenticatedUser, usersController.secret)
 
@@ -28,5 +29,9 @@ router.route('/login')
 
 router.route("/logout")
   .get(usersController.getLogout)
+
+// Game Routes
+router.route('/games')
+  .get(gamesController.getGames)
 
 module.exports = router 
