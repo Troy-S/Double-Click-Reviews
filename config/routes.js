@@ -27,10 +27,13 @@ router.route('/login')
   .get(usersController.getLogin)
   .post(usersController.postLogin)
 
-router.route("/logout")
+router.route('/logout')
   .get(usersController.getLogout)
 
 // Game Routes
+router.route('layout')
+  .get(gamesController.getLayout)
+
 router.route('/games')
   .get(gamesController.getGames)
 

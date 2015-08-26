@@ -24,9 +24,9 @@ if (app.get('env') === 'development') {
 // RESTful routes for my website
 
 // LAYOUT ROUTE
-app.get(function(req, res) {
+function getLayout(req, res) {
   res.render('layout');
-});
+}
 
 // HOME ROUTE
 app.get("/", function(req, res) {
@@ -40,12 +40,6 @@ function getGames(req, res) {
     res.render('games/index', { games: games});
   });
 }
-
-// app.get('/games', function(req, res) {
-//   Game.find({}, function(err, games) {
-//       res.render('games/index', { games: games });
-//   });
-// });
 
 // NEW
 app.get('/games/new', function(req, res) {
