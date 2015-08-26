@@ -31,6 +31,9 @@ router.route('/logout')
   .get(usersController.getLogout)
 
 // Game Routes
+router.route('homepage')
+  .get(gamesController.getHomepage)
+
 router.route('layout')
   .get(gamesController.getLayout)
 

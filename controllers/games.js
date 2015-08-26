@@ -29,12 +29,11 @@ function getLayout(req, res) {
 }
 
 // HOME ROUTE
-app.get("/", function(req, res) {
-  res.render('homepage', { header: "Search" });
-});
+function getHomepage(req, res) {
+  res.render('homepage', { header: 'Search' });
+}
 
 // INDEX
-
 function getGames(req, res) {
   Game.find({}, function(err, games) {
     res.render('games/index', { games: games});
