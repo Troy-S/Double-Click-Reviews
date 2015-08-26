@@ -40,4 +40,12 @@ router.route('layout')
 router.route('/games')
   .get(gamesController.getGames)
 
+router.route('/games/new')
+  .get(gamesController.getNewgames)
+
+//Not sure if this is right...
+router.route('/games/new')
+  .get(gamesController.getNewgames)
+  .post(gamesController.postGame)
+
 module.exports = router 

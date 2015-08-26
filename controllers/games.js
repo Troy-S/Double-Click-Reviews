@@ -41,12 +41,12 @@ function getGames(req, res) {
 }
 
 // NEW
-app.get('/games/new', function(req, res) {
+function getNewgames(req, res) {
   res.render('games/new');
-})
+}
 
 // CREATE
-app.post('/games', function(req,res) {
+function postGame(req, res) {
   Game.create(req.body.game, function(err) {
     if(err){
       res.send(err)
@@ -54,7 +54,7 @@ app.post('/games', function(req,res) {
       res.redirect('/games')
     }
   });
-});
+}
 
 // SHOW
 app.get('/games/:id', function(req, res) {
