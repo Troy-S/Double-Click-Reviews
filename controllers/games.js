@@ -57,11 +57,17 @@ function postGame(req, res) {
 }
 
 // SHOW
-app.get('/games/:id', function(req, res) {
-  Game.findById(req.params.id, function(err, game) {
-    res.render('games/show',{ game: game});
-  });
-});
+function showGames(req, res) {
+  Game.findById(req.params.id function(err, game) {
+    res.render('games/show',{ game: game });
+  })
+}
+
+// app.get('/games/:id', function(req, res) {
+//   Game.findById(req.params.id, function(err, game) {
+//     res.render('games/show',{ game: game});
+//   });
+// });
 
 // EDIT
 app.get('/games/:id/edit', function(req, res) {
@@ -87,3 +93,24 @@ app.put('/games/:id', function(req, res) {
   //     res.redirect('/games');
   //   });
   // });
+
+module.exports = {
+  getLayout: getLayout,
+  getHomepage: getHomepage,
+  getGames: getGames
+  getNewgames: getNewgames
+  postGame: postGame
+  showGames: showGames
+}
+
+
+
+
+
+
+
+
+
+
+
+

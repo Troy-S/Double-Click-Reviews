@@ -48,4 +48,7 @@ router.route('/games/new')
   .get(gamesController.getNewgames)
   .post(gamesController.postGame)
 
+router.route('games/show')
+  .get(gamesController.showGames)
+
 module.exports = router 
