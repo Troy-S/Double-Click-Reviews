@@ -39,7 +39,11 @@ router.route('/games')
 router.route('/games/new')
   .get(gamesController.getNewgames)
 
-router.route('games/show')
+router.route('/games/:id')
   .get(gamesController.showGames)
+  .post(gamesController.updateGame)
 
+router.route('/games/:id/edit')
+  .get(gamesController.editGame)
+ 
 module.exports = router 

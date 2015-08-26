@@ -31,34 +31,36 @@ function postGame(req, res) {
 // SHOW
 function showGames(req, res) {
   Game.findById(req.params.id, function(err, game) {
-    res.render('games/show',{ game: game });
-  })
+    res.render('games/show',{ game: game })
+  });
 }
 
-// app.get('/games/:id', function(req, res) {
-//   Game.findById(req.params.id, function(err, game) {
-//     res.render('games/show',{ game: game});
-//   });
-// });
-
 // EDIT
-// app.get('/games/:id/edit', function(req, res) {
-//   Game.findById(req.params.id, function(err, game){
-//     if (err) res.send(err);
-//     console.log(game);
-//     res.render('games/edit' , { game: game });
-//   });
-// });
+function editGame(req, res) {
+  Game.findById(req.params.id, function(err, game){
+    if(err) res.send(err);
+    console.log(game);
+    res.render('games/edit', { game: game });
+  });
+}
 
-// app.put('/games/:id', function(req, res) {
-//   Game.findById(req.params.id, function(err, game){
-//     if (err) res.send(err);
-//     console.log(game);
-//     res.render('games/edit' , { game: game });
-//   });
-// });
+// UPDATE
+function updateGame(req, res) {
+  Game.findByIdAndUpdate(req.params.id, req.body.game, function(err, game){
+    if(err) res.send(err);
+    console.log(game);
+    res.redirect('/games');
+  });
+}
 
-// DELETE game from list
+// DELETE
+function deleteGame(req, res) {
+  Game.findById(req.params.id, function(err, game) {
+    game.remove()
+    res.redirect('/games');
+  });
+}
+
   // app.get('games/:id/delete', function(req, res) {
   //   Game.findById(req.params.id, function(err, game) {
   //     game.remove()
@@ -70,17 +72,8 @@ module.exports = {
   getGames: getGames,
   getNewgames: getNewgames,
   postGame: postGame,
-  showGames: showGames
+  showGames: showGames,
+  editGame: editGame,
+  updateGame: updateGame,
+  deleteGame: deleteGame
 }
-
-
-
-
-
-
-
-
-
-
-
-
