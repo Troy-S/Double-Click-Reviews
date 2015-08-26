@@ -3,8 +3,9 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var passport = require('passport');
-var usersController = require('./controllers/users');
-var gamesController = require('./controllers/games');
+var usersController = require('../controllers/users');
+var gamesController = require('../controllers/games');
+var staticController = require('../controllers/static')
 
 function authenticatedUser(req, res, next) {
   if (req.isAuthenticated()) return next();
@@ -17,7 +18,7 @@ router.route('/secret')
   .get(authenticatedUser, usersController.secret)
 
 router.route('/')
-  .get(staticsController.home);
+  .get(staticController.home);
 
 router.route('/signup')
   .get(usersController.getSignup)
@@ -31,22 +32,12 @@ router.route('/logout')
   .get(usersController.getLogout)
 
 // Game Routes
-router.route('homepage')
-  .get(gamesController.getHomepage)
-
-router.route('layout')
-  .get(gamesController.getLayout)
-
 router.route('/games')
   .get(gamesController.getGames)
-
-router.route('/games/new')
-  .get(gamesController.getNewgames)
-
-//Not sure if this is right...
-router.route('/games/new')
-  .get(gamesController.getNewgames)
   .post(gamesController.postGame)
+
+router.route('/games/new')
+  .get(gamesController.getNewgames)
 
 router.route('games/show')
   .get(gamesController.showGames)

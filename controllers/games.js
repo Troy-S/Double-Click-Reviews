@@ -1,37 +1,9 @@
 var mongoose = require('mongoose');
+var Game = require('../models/game');
 mongoose.connect('mongodb://localhost/gamesdb');
 
-// Middleware
-app.use(methodOverride(function(req, res){
-  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-    var method = req.body._method
-    delete req.body._method
-    return method
-  }
-}));
-
-// Error handling
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
 
 // RESTful routes for my website
-
-// LAYOUT ROUTE
-function getLayout(req, res) {
-  res.render('layout');
-}
-
-// HOME ROUTE
-function getHomepage(req, res) {
-  res.render('homepage', { header: 'Search' });
-}
 
 // INDEX
 function getGames(req, res) {
@@ -47,7 +19,7 @@ function getNewgames(req, res) {
 
 // CREATE
 function postGame(req, res) {
-  Game.create(req.body.game, function(err) {
+  Game.create(req.body.game, function(err, game) {
     if(err){
       res.send(err)
     } else {
@@ -58,7 +30,7 @@ function postGame(req, res) {
 
 // SHOW
 function showGames(req, res) {
-  Game.findById(req.params.id function(err, game) {
+  Game.findById(req.params.id, function(err, game) {
     res.render('games/show',{ game: game });
   })
 }
@@ -70,21 +42,21 @@ function showGames(req, res) {
 // });
 
 // EDIT
-app.get('/games/:id/edit', function(req, res) {
-  Game.findById(req.params.id, function(err, game){
-    if (err) res.send(err);
-    console.log(game);
-    res.render('games/edit' , { game: game });
-  });
-});
+// app.get('/games/:id/edit', function(req, res) {
+//   Game.findById(req.params.id, function(err, game){
+//     if (err) res.send(err);
+//     console.log(game);
+//     res.render('games/edit' , { game: game });
+//   });
+// });
 
-app.put('/games/:id', function(req, res) {
-  Game.findById(req.params.id, function(err, game){
-    if (err) res.send(err);
-    console.log(game);
-    res.render('games/edit' , { game: game });
-  });
-});
+// app.put('/games/:id', function(req, res) {
+//   Game.findById(req.params.id, function(err, game){
+//     if (err) res.send(err);
+//     console.log(game);
+//     res.render('games/edit' , { game: game });
+//   });
+// });
 
 // DELETE game from list
   // app.get('games/:id/delete', function(req, res) {
@@ -95,11 +67,9 @@ app.put('/games/:id', function(req, res) {
   // });
 
 module.exports = {
-  getLayout: getLayout,
-  getHomepage: getHomepage,
-  getGames: getGames
-  getNewgames: getNewgames
-  postGame: postGame
+  getGames: getGames,
+  getNewgames: getNewgames,
+  postGame: postGame,
   showGames: showGames
 }
 

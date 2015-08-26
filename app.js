@@ -30,6 +30,26 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+// Middleware
+app.use(methodOverride(function(req, res){
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    var method = req.body._method
+    delete req.body._method
+    return method
+  }
+}));
+
+// Error handling
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
+
 require('./config/passport')(passport);
 
 var routes = require('./config/routes');
