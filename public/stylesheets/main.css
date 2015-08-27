@@ -1,0 +1,101 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Helvetica Neue'
+}
+
+header {
+  height: 75px;
+  display: block;
+  width: 100%;
+  z-index: 9;
+  border-bottom: 1px solid #E2E2E2;
+
+}
+
+header li {
+  float: right;
+  display: inline;
+  margin-right: 10px;
+  padding: 0px 5px 0px 5px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 73px;
+  overflow: hidden;
+}
+
+#logo {
+  padding: 0px;
+  float: left;
+  margin-left: 45px;
+}
+
+#logo img {
+  width: 100px;
+} 
+
+ul {
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: #6C6D70;
+  font-weight: 300;
+}
+
+a:hover {
+  color: #36C4F1;
+  -webkit-transition: color 0.5s;
+}
+
+
+span {
+  padding: 5px;
+  border-radius: 5px;
+  background: #f2f2f2;
+  font-weight: 400;
+  margin-right: 45px;
+}
+
+input {
+  outline: none;
+  margin-top: 22px;  
+  line-height: 73x;
+  padding: 0 7px;
+  height: 30px;
+  color: #666;
+  vertical-align: top;
+  border: 1px solid rgba(0,0,0,0.25);
+  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  box-sizing: border-box;
+  background: #fff; 
+  border-radius: 3px;
+}
+
+.content {
+  height: 100vh;
+  text-align: center;
+}
+
+.feature {
+  height: 80vh;
+  background: url(http://static.gamespot.com/uploads/original/1493/14930800/2416045-2416043-9013953347-Leagu.jpg) no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: .6;
+}
+
+
+  .content ul {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  li {
+    list-style-type: none; 
+  }
