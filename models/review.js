@@ -2,9 +2,8 @@ var mongoose = require('mongoose');
 
 // SCHEMA
 var reviewSchema = new mongoose.Schema({
-  image: String,
   video: String,
-  content: String,
+  content: String
 });
 
 // SCHEMA model

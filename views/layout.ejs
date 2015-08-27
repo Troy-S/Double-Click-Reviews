@@ -6,19 +6,26 @@
   <title>Double-click Reviews</title>
 </head>
 <body>
-<header>
-  <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/games">View Games</a></li>
-      <li><a href="/games/new">Add a game</a></li>
-    </ul>
-  </nav>
-</header>
-  <section class="main">
-    <h1> DCReviews </h1>
-  </section>
+  <header>
+    <nav>
+      <ul>
+        <li id="logo"><img src=""></li>
+        <li><a href="/">Home</a></li>
+        <% if (user) { %>
+        <li><a href="/logout">Logout</a></li<a>
+          <% } else { %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signup">Signup</a></li>
+          <% } %>
+          <li><a href="/games">View Games</a></li>
+          <li><a href="/games/new">Add a game</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="main">
+      <h1> DCReviews </h1>
+    </section>
 
-  <%- body %>
-</body>
-</html>
+    <%- body %>
+  </body>
+  </html>

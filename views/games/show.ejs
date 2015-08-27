@@ -7,5 +7,27 @@
   </ul>
 </div>
 
-<label for="name">Description</label>
-<input type="text" name="game[description]">
+<label for="name">Current Reviews:</label>
+<% for (var i = 0; i < game.reviews.length; i++) { %>
+<ul>
+  <li><%= game.reviews[i].video %></li>
+  <li><%= game.reviews[i].content %></li>
+</ul>
+<% } %>
+
+<br />
+
+<label for="name">Review Here:</label>
+<div class="new_form_container">
+  <form action="/games/<%= game.id %>" method="POST">
+    <div>
+      <label for="name">Video:</label>
+      <input type="text" name="game[reviews][video]">
+
+      <label for="name">Content:</label>
+      <input type="text" name="game[reviews][content]">
+
+      <input type="submit">
+    </div>
+  </form>
+</div>

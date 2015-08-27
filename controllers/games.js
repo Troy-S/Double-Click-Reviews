@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
+var Review = require('../models/review');
 var Game = require('../models/game');
-mongoose.connect('mongodb://localhost/gamesdb');
 
 
 // RESTful routes for my website
@@ -61,6 +61,30 @@ function deleteGame(req, res) {
   });
 }
 
+
+function postReview(req, res){
+  Game.findById(req.params.id, function(err, game) {
+    if(err){
+      res.send(err)
+    } else {
+      game.reviews.push({
+        video: req.body.game.reviews.video,
+        content: req.body.game.reviews.content
+      })
+      console.log(review)
+      res.redirect('/games')
+    }
+  });
+
+}
+
+// function postReview(req, res){
+//   Game.reviews.create({
+//     video: req.body.game.reviews.video,
+//     content: req.body.game.reviews.content
+//   })
+// }
+
   // app.get('games/:id/delete', function(req, res) {
   //   Game.findById(req.params.id, function(err, game) {
   //     game.remove()
@@ -75,5 +99,6 @@ module.exports = {
   showGames: showGames,
   editGame: editGame,
   updateGame: updateGame,
-  deleteGame: deleteGame
+  deleteGame: deleteGame,
+  postReview: postReview
 }

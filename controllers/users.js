@@ -1,37 +1,40 @@
 var passport = require("passport")
 
-// GET SIGNUP
+// GET /signup
 function getSignup(request, response) {
   response.render('signup.ejs', { message: request.flash('signupMessage') });
 }
 
-// POST SIGNUP
+// POST /signup
 function postSignup(request, response) {
+  console.log(request.params)
 
-  var signupStrategy = passport.authenticate('local-signup', {
-    successRedirect : '/',
-    failureRedirect : '/signup',
-    failureFlash : true
+  var signUpStrategy = passport.authenticate('local-signup', {
+    successRedirect : '/', 
+    failureRedirect : '/signup', 
+    failureFlash : true 
   });
-  return signupStrategy(request, response);
+
+  return signUpStrategy(request, response) 
 }
 
-// GET LOGIN
-function getLogin(request, response) {
-  response.render('login.ejs', { message: request.flash('loginMessage') });
+// GET /login
+function getLogin(request, response) { 
+  response.render('login.ejs', { message: request.flash('loginMessage') }); 
 }
 
-// POST LOGIN
+// POST /login 
 function postLogin(request, response) {
-  var loginStrategy = passport.authenticate('local-login', {
-    successRedirect : '/',
-    failureRedirect : '/login',
-    failureFlash : true
+  var loginProperty = passport.authenticate('local-login', {
+    successRedirect : '/', 
+    failureRedirect : '/login', 
+    failureFlash : true 
   });
-  return loginStrategy(request, response);
+
+  return loginProperty(request, response);
 }
 
-// GET LOGOUT
+// GET /logout
 function getLogout(request, response) {
   request.logout();
   response.redirect('/');
@@ -39,7 +42,7 @@ function getLogout(request, response) {
 
 // Restricted page
 function secret(request, response){
-  response.render('secret.ejs')
+  response.render('secret.ejs');
 }
 
 module.exports = {

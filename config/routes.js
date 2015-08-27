@@ -14,8 +14,6 @@ function authenticatedUser(req, res, next) {
 }
 
 // User Routes
-router.route('/secret')
-  .get(authenticatedUser, usersController.secret)
 
 router.route('/')
   .get(staticController.home);
@@ -28,22 +26,26 @@ router.route('/login')
   .get(usersController.getLogin)
   .post(usersController.postLogin)
 
-router.route('/logout')
+router.route("/logout")
   .get(usersController.getLogout)
+
+router.route('/secret')
+  .get(authenticatedUser, usersController.secret)
 
 // Game Routes
 router.route('/games')
-  .get(gamesController.getGames)
-  .post(gamesController.postGame)
+  .get(authenticatedUser, gamesController.getGames)
+  .post(authenticatedUser, gamesController.postGame)
 
 router.route('/games/new')
-  .get(gamesController.getNewgames)
+  .get(authenticatedUser, gamesController.getNewgames)
 
 router.route('/games/:id')
-  .get(gamesController.showGames)
-  .post(gamesController.updateGame)
+  .get(authenticatedUser, gamesController.showGames)
+  .post(authenticatedUser, gamesController.updateGame)
+  .post(authenticatedUser, gamesController.postReview)
 
 router.route('/games/:id/edit')
-  .get(gamesController.editGame)
- 
+  .get(authenticatedUser, gamesController.editGame)
+
 module.exports = router 
