@@ -5,6 +5,7 @@ var Review = mongoose.model('Review');
 // SCHEMA
 var gameSchema = new mongoose.Schema({
   title: String,
+  image: String,
   platform: String,
   release_date: Date,
   description: String,
