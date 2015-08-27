@@ -1,7 +1,11 @@
 body {
   margin: 0px;
   padding: 0px;
-  font-family: 'Helvetica Neue'
+  font-family: 'Helvetica Neue';
+}
+
+h2 {
+  font-weight: 400;
 }
 
 header {
@@ -58,7 +62,7 @@ span {
   margin-right: 45px;
 }
 
-input {
+li input {
   outline: none;
   margin-top: 22px;  
   line-height: 73x;
@@ -75,27 +79,105 @@ input {
   border-radius: 3px;
 }
 
-.content {
+.section {
   height: 100vh;
   text-align: center;
 }
 
 .feature {
   height: 80vh;
-  background: url(http://static.gamespot.com/uploads/original/1493/14930800/2416045-2416043-9013953347-Leagu.jpg) no-repeat center center; 
+  background: url(/images/feature-image.jpg) no-repeat center center; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  opacity: .6;
+  /*opacity: .7;*/
 }
 
 
-  .content ul {
-    padding: 0px;
-    margin: 0px;
-  }
+.section ul {
+  padding: 0px;
+  margin: 0px;
+}
 
-  li {
-    list-style-type: none; 
-  }
+.content {}
+
+li {
+  list-style-type: none; 
+}
+.content img {
+  float: left;
+  width: 600px;
+}
+
+.content p {
+  margin: 0 auto;
+  text-align: center;
+  width: 600px;
+  text-align: justify;
+  color: #FFF;
+}
+
+.content button {
+  margin-top: 60px;
+  background: #333;
+  border-radius: 3px;
+  border: none;
+  color: #36C4F1;
+  font-size: 30px;
+}
+
+/*LOGIN PAGE*/
+
+h2 {
+  text-align: center;
+}
+
+form {
+  text-align: center;
+}
+
+
+.form-group {
+  padding: 10px;
+}
+
+.form-container {
+  border: 1px solid #E2E2E2;
+  border-radius: 3px;
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 350px;
+  padding: 10px 10px 40px 10px;
+  background-color: #f2f2f2;
+}
+
+.form-container input {
+  outline: none;
+  margin-top: 10px;
+  line-height: 73x;
+  padding: 0 7px;
+  height: 40px;
+  width: 250px;
+  font-size: 15px;
+  color: #666;
+  vertical-align: top;
+  border: 1px solid rgba(0,0,0,0.25);
+  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 3px;
+}
+
+.form-container label {
+  font-weight: 300;
+}
+
+.form-container input[type=submit] {
+  background: #5BB157;
+  color: #FFF;
+  width: 80px;
+}
+
