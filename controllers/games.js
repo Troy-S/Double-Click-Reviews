@@ -30,16 +30,19 @@ function postGame(req, res) {
 
 // SHOW
 function showGames(req, res) {
-  Game.findById(req.params.id, function(err, game) {
-    res.render('games/show',{ game: game })
-  });
+  Game.findById(req.params.id)
+    .populate("reviews")
+    .exec(function(err, game) {
+      if (err) res.send(err);
+
+      res.render('games/show',{ game: game })
+    });
 }
 
 // EDIT
 function editGame(req, res) {
-  Game.findById(req.params.id, function(err, game){
+  Game.findByIdAndRemove(req.params.id, function(err, game){
     if(err) res.send(err);
-    console.log(game);
     res.render('games/edit', { game: game });
   });
 }
@@ -67,30 +70,28 @@ function postReview(req, res){
     if(err){
       res.send(err)
     } else {
-      game.reviews.push({
+
+      var review = new Review({
         video: req.body.game.reviews.video,
         content: req.body.game.reviews.content
       })
-      console.log(review)
-      res.redirect('/games')
+
+      review.save(function(err, res){
+        game.reviews.push(review);
+        game.save();
+      });
+
+      res.redirect('/games/'+req.params.id);
     }
   });
-
 }
 
-// function postReview(req, res){
-//   Game.reviews.create({
-//     video: req.body.game.reviews.video,
-//     content: req.body.game.reviews.content
-//   })
-// }
-
-  // app.get('games/:id/delete', function(req, res) {
-  //   Game.findById(req.params.id, function(err, game) {
-  //     game.remove()
-  //     res.redirect('/games');
-  //   });
-  // });
+// app.get('games/:id/delete', function(req, res) {
+//   Game.findById(req.params.id, function(err, game) {
+//     game.remove()
+//     res.redirect('/games');
+//   });
+// });
 
 module.exports = {
   getGames: getGames,

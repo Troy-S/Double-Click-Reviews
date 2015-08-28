@@ -16,7 +16,7 @@ function authenticatedUser(req, res, next) {
 // User Routes
 
 router.route('/')
-  .get(staticController.home);
+  .get(gamesController.getGames);
 
 router.route('/signup')
   .get(usersController.getSignup)
@@ -40,10 +40,12 @@ router.route('/games')
 router.route('/games/new')
   .get(authenticatedUser, gamesController.getNewgames)
 
+router.route('/games/:id/review')
+  .post(authenticatedUser, gamesController.postReview)
+
 router.route('/games/:id')
   .get(authenticatedUser, gamesController.showGames)
   .post(authenticatedUser, gamesController.updateGame)
-  .post(authenticatedUser, gamesController.postReview)
 
 router.route('/games/:id/edit')
   .get(authenticatedUser, gamesController.editGame)

@@ -2,8 +2,9 @@
 <html lang='en'>
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="/./stylesheets/animate.css">
   <link rel="stylesheet" href="/./stylesheets/main.css">
-  <title>Double-click Reviews</title>
+  <title>DBL Reviews</title>
 <!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="/stylesheets/bootstrap.css">
 </head>
@@ -11,7 +12,7 @@
   <header>
     <nav>
       <ul>
-        <li id="logo"><img src="/images/logo.jpg"></li>
+        <li id="logo"><img class="dbllogo animated slideInDown" src="/images/logo.jpg"></li>
         <% if (user) { %>
         <li><a href="/logout"><span>Logout</span></a></li<a>
           <% } else { %>
@@ -19,9 +20,13 @@
           <li><a href="/login">Login</a></li>
           <% } %>
           <li><a href="/games">Home</a></li>
-
-          <li><a href="/games/new">Add a game</a></li>
-          <li><input type="search" placeholder="Search Games"></li>
+          <li><a href="/index">Games</a></li>
+          <li>
+            <form method="get" action="/games/55df5a645ca491f4cae343cf">
+              <input type="search" placeholder="Search Games"></li>
+              <input type="submit" value="Submit">
+            </form>
+          <li class="header-text animated slideInDown">home, for your interactive reviews...</li>
         </ul>
       </nav>
     </header>

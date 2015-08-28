@@ -2,10 +2,27 @@
   font-family: 'Helvetica Neue';
 }
 
+nav input[type=submit] {
+  display: none;
+}
+
+.showcontainer {
+  margin-top: 50px;
+}
+
 body {
   margin: 0px;
   padding: 0px;
   font-family: 'Helvetica Neue';
+}
+
+img.dbllogo animated slideInLeft {
+  
+}
+
+ul {
+  margin: 0px;
+  padding: 0px;
 }
 
 h1 {
@@ -19,13 +36,17 @@ h2 {
 }
 
 header {
+  position: fixed;
   height: 80px;
   display: block;
   width: 100%;
   z-index: 9;
   border-bottom: 1px solid #E2E2E2;
   background: #FFF;
+}
 
+.gameinfo li {
+  color: #fff;
 }
 
 header li {
@@ -89,7 +110,7 @@ li input {
 
 .feature {
   padding-top: 50px;
-  height: 70vh;
+  height: 90vh;
   background: url(/images/feature-image.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -188,6 +209,7 @@ form {
 }
 
 .games-index {
+  margin-top: 30px; 
   text-align: center;
 }
 
@@ -202,6 +224,10 @@ form {
   border-radius: 3px;
 }
 
+div.games-index {
+
+}
+
 .games-index .row {
   margin: 50px 0px 50px 0px;
 }
@@ -212,6 +238,8 @@ form {
   background: rgba(0, 0, 0, 0.4);
   width: 90%;
   height: 90%;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-delay: 2;
 }
 
 .left {
@@ -224,6 +252,7 @@ form {
 }
 
 .right {
+  padding-top: 63px;
   float: right;
   width: 60%;
 }
@@ -234,4 +263,64 @@ iframe {
 
 strong {
   color: #36C4F1;
+}
+
+.show-main {
+  padding: 80px;
+  text-align: center;
+  background: url(/images/background.jpg) no-repeat center center fixed;
+}
+
+img {
+  border-radius: 3px;
+}
+
+iframe {
+  border-radius: 3px;
+}
+
+
+.reviews {
+  text-align: center;
+}
+
+button {
+  background: #5BB157;
+  color: #FFF;
+  width: 80px;
+  margin-top: 14px;
+  border-radius: 10px;
+}
+
+img.lolimage {
+  padding-top: 34px;
+  width: 60%;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-delay: 3;
+}
+
+li.header-text {
+  float: left;
+  color: #36C4F1;
+}
+
+p.feature-info.animated.slideInLeft {
+  -webkit-animation-duration: 2.3s;
+  -webkit-animation-delay: 0.5s;
+}
+
+button.gameredirect {
+  margin-top: 10px;
+}
+
+col-lg-6 {
+  margin-bottom: -40px;
+}
+
+main {
+  padding-top: 60px;
+}
+
+div.form-container {
+  width: 304px;
 }

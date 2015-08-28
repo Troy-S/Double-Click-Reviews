@@ -1,33 +1,50 @@
-<div action="/games/show" method="GET">
+<div class="show-main">
+  <div class="row">
+    <div class="col-lg-6">
+      <ul>
+        <div class="showcontainer" action="/games/show" method="GET">
+          <ul class="gameinfo">
+            <img class="rsimage" src="<%= game.image %>">
+            <li><h1><%= game.title %></h1></li>
+            <li>Platform: <%= game.platform %></li>
+            <li>Price: £<%= game.price %></li>
+            <li><%= game.description %></li>
+            <li><button class="gameredirect">Play Now</button></li>
+          </ul>
+        </div>
+      </div>
+    </ul>
+
+    <div class="col-lg-6">
+      <div class="form-container">
+        <h2>Write a review</h2>
+        <form action="/games/<%= game.id %>/review" method="POST">
+          <div>
+            <label for="name">Title</label><br>
+            <input type="text" name="game[reviews][content]">
+            <br>  
+            <label for="name">Video</label><br>
+            <input type="text" name="game[reviews][video]">
+            <br>
+            <input type="submit">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="reviews">
+  <h2>Reviews</h2>
   <ul>
-    <li><%= game.title %></li>
-    <li><%= game.release_date %></li>
-    <li><%= game.platform %></li>
-    <li><%= game.price %></li>
+    <% for (var i = 0; i < game.reviews.length; i++) { %>
+    <li><h3><%= game.reviews[i].content %></h3></li>
+    <li>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= game.reviews[i].video %>?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+    </li>
+    <% }; %>
   </ul>
 </div>
 
-<label for="name">Current Reviews:</label>
-<% for (var i = 0; i < game.reviews.length; i++) { %>
-<ul>
-  <li><%= game.reviews[i].video %></li>
-  <li><%= game.reviews[i].content %></li>
-</ul>
-<% } %>
 
-<br />
-
-<label for="name">Review Here:</label>
-<div class="new_form_container">
-  <form action="/games/<%= game.id %>" method="POST">
-    <div>
-      <label for="name">Video:</label>
-      <input type="text" name="game[reviews][video]">
-
-      <label for="name">Content:</label>
-      <input type="text" name="game[reviews][content]">
-
-      <input type="submit">
-    </div>
-  </form>
-</div>

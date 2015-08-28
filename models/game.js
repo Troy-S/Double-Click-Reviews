@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-require('./review')
-var Review = mongoose.model('Review');
+// require('./review')
+// var Review = mongoose.model('Review');
 
 // SCHEMA
 var gameSchema = new mongoose.Schema({
@@ -10,7 +10,10 @@ var gameSchema = new mongoose.Schema({
   release_date: Date,
   description: String,
   price: Number,
-  reviews: [Review.schema]
+  reviews: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Review'
+  }]
 });
 
 // SCHEMA model
